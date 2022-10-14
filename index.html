@@ -5,16 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/style.css">
-    <script type="text/javascript" src="../Project/JS/index.js"></script>
     <title>Hunter's Mark</title>
 </head>
 <body>
-    <div class ="start-screen">
-        <h1>Hunter's Mark</h1>
+    <div class ="startscreen">
+       <h1>Hunter's Mark</h1> 
+       <img src="/Images/logo.png" alt="hunters mark logo" class="logo"/>
         <div class="instructions"">
             <h2>Welcome to Hunter's Mark</h2>
-            <p>Instructions placeholder</p>
+            <p>A game where you kill orcs using only your wits, bow... and keyboard. <br> Use the arrow keys on your keyboard to move your character,<br>and spacebar to fire your arrows. Good luck!</p>
+            <button id="startBtn">Start game!</button>
         </div>
     </div>
+    <div id="game-screen">
+        <canvas id="canvas" width="700" height="500"></canvas>
+    </div>
+    <script type="text/javascript" src="JS/index.js"></script>   
 </body>
 </html>

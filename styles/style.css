@@ -1,3 +1,43 @@
-.start-screen {
+body {
+    padding: 0;
     text-align: center;
-}
+    font-family: "Verdana"
+  }
+  canvas {
+    border: 1px solid black;
+    float :center;
+  }
+  .startSreen {
+    float: left;
+    padding: 0% 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .instructions {
+    font-size: 15px;
+    
+  }
+  
+  .logo {
+    width: 250px;
+  }
+  
+  
+  body button {
+    font-size: 30px;
+    background-color: purple;
+    color: black;
+    padding: 20px 40px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  #game-screen {
+      float: center;
+      padding: 20px 0px;
+  }
+  
