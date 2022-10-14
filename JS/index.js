@@ -8,7 +8,20 @@ gameScreen.style.display ="none";
 const background = new Image();
 background.src = "../Images/Background.png"
 const player = new Image();
-player.src ="../Images/Warrior_03__ATTACK_002.png"
+player.src = "../Images/player.png"
+
+//player position and size
+const playerStartX = 0;
+const playerStartY = canvas.height - 100;
+
+
+const animate = () => {
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
+    ctx.drawImage(player, 0, 350-100, 100, 100)
+}
+
+
+
 
 
 window.onload = () => {
@@ -19,6 +32,7 @@ window.onload = () => {
     function startGame() {
         start.style.display = 'none'
         gameScreen.style.display ='block'
+        animate();
     }
 }
 
