@@ -9,7 +9,7 @@ body {
     border: 1px solid black;
     float :center;
   }
-  .startSreen {
+  #startScreen {
     float: left;
     padding: 0% 10%;
     display: flex;
@@ -43,3 +43,7 @@ body {
       padding: 20px 0px;
   }
   
+  .gameover {
+    float: center;
+    padding: 20px 0px;
+  }
