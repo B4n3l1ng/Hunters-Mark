@@ -2,9 +2,9 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const start = document.querySelector("#startscreen");
 const gameScreen = document.querySelector("#game-screen");
-const gameOver = document.querySelector(".gameover")
 gameScreen.style.display = "none";
-gameOver.style.display="none"
+const overScreen = document.querySelector(".gameover");
+overScreen.style.display = "none";
 
 //images
 const background = new Image();
@@ -13,6 +13,8 @@ const player = new Image();
 player.src = "../Images/player.png";
 const enemyImg = new Image();
 enemyImg.src = "../Images/orc final.png";
+const arrowImg = new Image();
+arrowImg.src = "../Images/arrow final.png";
 
 //player position and size
 let playerX = 0;
@@ -33,15 +35,33 @@ let enemySpeed = 3;
 
 //enemies
 const enemies = [
-  { x: 1200, y: (Math.random(canvas.height)), img: enemyImg },
-  { x: 1400, y: (Math.random(canvas.height)), img: enemyImg },
-  { x: 1600, y: (Math.random(canvas.height)), img: enemyImg },
+  { x: 1200, y: (Math.random()*canvas.height), img: enemyImg },
+  { x: 1400, y: (Math.random()*canvas.height), img: enemyImg },
+  { x: 1600, y: (Math.random()*canvas.height), img: enemyImg },
 ];
+
+class Projectile {
+    constructor({x, y}) {
+        this.x = x;
+        this.y = y;
+        this.image = arrowImg;
+    }
+
+    draw() {
+        ctx.drawImage(this.image, this.x, this.y, 25, 15)
+    }
+    update() {
+        this.draw()
+        this.x += 4;
+    }
+}
+const projectiles = [];
 
 
 const animate = () => {
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
   ctx.drawImage(player, playerX, playerY, charWidth, charHeight);
+  
   //enemies moving
   for (let i =0; i< enemies.length; i+=1) {
     let current = enemies[i];
@@ -49,6 +69,7 @@ const animate = () => {
     current.x -= enemySpeed;
     if (current.x < 0) {
         current.x = 1200;
+        current.y = Math.random()*canvas.height;
     }
     if (current.x < playerX + charWidth && current.x + charWidth > playerX && current.y < playerY + charHeight && current.y + charHeight > playerY ) {
         isGameOver=true;
@@ -60,9 +81,11 @@ const animate = () => {
   } else if (movingDown === true && playerY <= 700 - charHeight) {
     playerY += 5;
   }
-
+    projectiles.forEach(projectile => {
+        projectile.update();
+     })
   if (isGameOver) {
-    gameOver.style.display="block"
+    overScreen.style.display="block"
     gameScreen.style.display ="none"
     cancelAnimationFrame(gameId);
   } else {
@@ -81,27 +104,27 @@ window.onload = () => {
     animate();
 
     document.addEventListener("keydown", (event) => {
-      if (event.code === "ArrowUp") {
+      console.log(event);
+        if (event.code === "ArrowUp") {
         movingUp = true;
       } else if (event.code === "ArrowDown") {
         movingDown = true;
+      } else if (event.code ==="Space") {
+        projectiles.push(
+            new Projectile ({
+                x: playerX + charWidth,
+                y: playerY + charHeight/2
+            })
+            )
       }
-    });
+    })
     document.addEventListener("keyup", () => {
       movingUp = false;
       movingDown = false;
     });
   }
-};
 
-/*window.onload = () => {
-    document.getElementById('startBtn').onclick = () => {
-      console.log('starting')
-      startGame()
-      
-    }
-    function startGame() {
-        start.style.display ='none'
-    }
-    
-}*/
+    document.getElementById("restartBtn").onclick = () => {
+      location.reload();
+    };
+}
