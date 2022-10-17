@@ -31,9 +31,9 @@ const animate = () => {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
     ctx.drawImage(player, playerX, playerY, charWidth, charHeight)
     // moving main character
-    if (movingUp === true && playerX >= 0) {
+    if (movingUp === true && playerY >= 0) {
         playerY -= 3;
-    } else if (movingDown === true && playerX <= 0 + charHeight) {
+    } else if (movingDown === true && playerY <= 700 - charHeight) {
         playerY += 3
     }
 
