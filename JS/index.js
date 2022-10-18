@@ -24,6 +24,8 @@ const dying = new Audio("../Sounds/Dying.wav");
 dying.volume = 0.2;
 const fail = new Audio("../Sounds/fail sound.wav");
 fail.volume = 0.2;
+const howl = new Audio("../Sounds/howl.wav");
+howl.volume = 0.2;
 
 //images
 const background = new Image();
@@ -140,7 +142,7 @@ const animate = () => {
     ) {
       isGameOver = true;
     }
-    if (artyX < 900 - artyWidth + 1) {
+    if (artyX < 900 - artyWidth + 1 && isArtyUp === true) {
       if (current.x < artyX + artyWidth && current.x + charWidth > artyX) {
         current.x = 900 + charWidth;
         current.y = Math.random() * (canvas.height - charHeight);
@@ -164,7 +166,6 @@ const animate = () => {
         scorePlace.innerHTML = score;
       }
     });
-    //arty collisions to be made here
   }
   // moving main character
   if (movingUp === true && playerY >= 0) {
@@ -235,6 +236,7 @@ window.onload = () => {
         );
       } else if (event.code === "KeyV") {
         if (artyUses > 0) {
+          howl.play();
           isArtyUp = true;
         }
       }
