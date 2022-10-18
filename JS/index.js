@@ -67,6 +67,7 @@ let enemySpeed = 3;
 let score = 0;
 let interval = 0;
 let artyUses = 1;
+let lives = 3;
 
 //enemies
 const enemies = [
@@ -105,6 +106,9 @@ const animate = () => {
   if (scoreStr[scoreStr.length - 1] === "9") {
     interval = 0;
   }
+  if (lives <= 0) {
+    isGameOver = true;
+  }
   if (isArtyUp === true) {
     ctx.drawImage(arty, artyX, 0, artyWidth, artyHeight);
     ctx.drawImage(arty, artyX, 0 + artyHeight, artyWidth, artyHeight);
@@ -129,6 +133,8 @@ const animate = () => {
     if (current.x < 0) {
       current.x = 900 + charWidth;
       current.y = Math.random() * (canvas.height - charHeight);
+      lives -= 1;
+      console.log(lives);
       if (score > 0) {
         score -= 1;
         scorePlace.innerHTML = score;
