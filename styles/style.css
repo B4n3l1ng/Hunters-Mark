@@ -17,11 +17,6 @@ body {
     align-items: center;
   }
   
-  .instructions {
-    font-size: 15px;
-    
-  }
-  
   .logo {
     width: 250px;
   }
@@ -36,6 +31,7 @@ body {
     box-shadow: 0;
     border-radius: 5px;
     margin-bottom: 20px;
+    margin-top: 20px;
   }
   
   #game-screen {
