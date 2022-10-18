@@ -47,3 +47,8 @@ body {
     float: center;
     padding: 20px 0px;
   }
+
+  #score {
+    padding: 0px;
+    margin: 0px
+  }

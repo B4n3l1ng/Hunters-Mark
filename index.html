@@ -19,13 +19,15 @@
     </div>
     
     <div id="game-screen">
+        <p id="score"><span>Score:</span> <span id="score-num">0</span></p>
         <canvas id="canvas" width="900" height="700"></canvas>
+        
     </div>
        
     <div class="gameover">
-        <h1>Game Over!</h1>
-        <p>Perhaps next time you should ask Hawkeye for some help.</p>
-        <p>Your score:</p>
+        <h1 id="gameOverTitle">Game Over!</h1>
+        <p id="easter">Perhaps next time you should ask Hawkeye for some help.</p>
+        <p><span>Your score:</span> <span id="final-score"></span></p>
         <button id="restartBtn">Try again!</button>
     </div>
 
