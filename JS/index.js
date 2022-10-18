@@ -193,6 +193,7 @@ const animate = () => {
 
   if (isGameOver) {
     music.pause();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (score >= 50) {
       gameOverTitle.innerHTML = "You saved the village!";
       easterEgg.innerHTML = "Hawkeye has got nothing on you!";
