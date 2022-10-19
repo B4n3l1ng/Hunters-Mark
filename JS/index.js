@@ -17,7 +17,7 @@ const easterEgg = document.querySelector("#easter");
 //sounds
 const music = new Audio("../Sounds/Background Music.mp3");
 music.volume = 0.1;
-const victory = new Audio("/Sounds/Game Over Screen.mp3");
+const victory = new Audio("../Sounds/Game Over Screen.mp3");
 victory.volume = 0.2;
 const arrowShot = new Audio("../Sounds/Arrow Shot.wav");
 arrowShot.volume = 1;
