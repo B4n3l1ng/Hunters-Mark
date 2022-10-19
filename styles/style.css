@@ -46,5 +46,15 @@ body {
 
   #score {
     padding: 0px;
-    margin: 0px
+    margin: 0px;
+  }
+  #lives {
+    padding : 0px;
+    margin: 0px;
+  }
+  #scoring {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px;
+    margin: 0px;
   }

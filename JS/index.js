@@ -10,6 +10,7 @@ const instructions = document.querySelector("#instructions");
 instructions.style.display = "none";
 const gameOverTitle = document.querySelector("#gameOverTitle");
 const scorePlace = document.querySelector("#score-num");
+const livesPlace = document.querySelector("#lives-num");
 const finalScore = document.querySelector("#final-score");
 const easterEgg = document.querySelector("#easter");
 
@@ -70,7 +71,7 @@ let artyUses = 1;
 let lives = 3;
 
 //enemies
-const enemies = [
+let enemies = [
   { x: 1200, y: Math.random() * (canvas.height - charHeight), img: enemyImg1 },
   { x: 1400, y: Math.random() * (canvas.height - charHeight), img: enemyImg2 },
   { x: 1600, y: Math.random() * (canvas.height - charHeight), img: enemyImg3 },
@@ -91,7 +92,7 @@ class Projectile {
     this.x += 10;
   }
 }
-const projectiles = [];
+let projectiles = [];
 
 const animate = () => {
   let scoreStr = score.toString();
@@ -134,7 +135,7 @@ const animate = () => {
       current.x = 900 + charWidth;
       current.y = Math.random() * (canvas.height - charHeight);
       lives -= 1;
-      console.log(lives);
+      livesPlace.innerHTML = lives;
       if (score > 0) {
         score -= 1;
         scorePlace.innerHTML = score;
@@ -193,6 +194,7 @@ const animate = () => {
 
   if (isGameOver) {
     music.pause();
+    music.currentTime = 0;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (score >= 50) {
       gameOverTitle.innerHTML = "You saved the village!";
@@ -255,6 +257,39 @@ window.onload = () => {
   }
 
   document.getElementById("restartBtn").onclick = () => {
-    location.reload();
+    /*location.reload(); I was told this was cheating xD*/
+    playerX = 0;
+    playerY = canvas.height / 2 - 100 + 50;
+    artyX = 0 + charHeight / 2;
+    isGameOver = false;
+    gameId = 0;
+    enemySpeed = 3;
+    score = 0;
+    scorePlace.innerHTML = 0;
+    interval = 0;
+    artyUses = 1;
+    lives = 3;
+    livesPlace.innerHTML = 0;
+    enemies = [
+      {
+        x: 1200,
+        y: Math.random() * (canvas.height - charHeight),
+        img: enemyImg1,
+      },
+      {
+        x: 1400,
+        y: Math.random() * (canvas.height - charHeight),
+        img: enemyImg2,
+      },
+      {
+        x: 1600,
+        y: Math.random() * (canvas.height - charHeight),
+        img: enemyImg3,
+      },
+    ];
+    projectiles.length = 0;
+    console.log(projectiles.length);
+    overScreen.style.display = "none";
+    start.style.display = "block";
   };
 };
