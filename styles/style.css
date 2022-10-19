@@ -2,20 +2,14 @@ body {
     padding: 0;
     text-align: center;
     font-family: "Verdana";
-    background-color: darkgreen;
+    background-color: brown;
     color: silver
   }
   canvas {
     border: 1px solid black;
     float :center;
   }
-  #startScreen {
-    float: left;
-    padding: 0% 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+ 
   
   .logo {
     width: 250px;
@@ -24,8 +18,8 @@ body {
   
   body button {
     font-size: 30px;
-    background-color: rgb(192, 114, 42);
-    color: black;
+    background-color: darkgreen;
+    color: silver;
     padding: 20px 40px;
     border: 0;
     box-shadow: 0;

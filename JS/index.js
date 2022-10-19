@@ -69,9 +69,10 @@ let score = 0;
 let interval = 0;
 let artyUses = 1;
 let lives = 3;
+let isGameStarted = false;
 
 //enemies
-let enemies = [
+const enemies = [
   { x: 1200, y: Math.random() * (canvas.height - charHeight), img: enemyImg1 },
   { x: 1400, y: Math.random() * (canvas.height - charHeight), img: enemyImg2 },
   { x: 1600, y: Math.random() * (canvas.height - charHeight), img: enemyImg3 },
@@ -95,6 +96,7 @@ class Projectile {
 let projectiles = [];
 
 const animate = () => {
+  let projectileCopy = projectiles.map((element) => element);
   let scoreStr = score.toString();
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
   ctx.drawImage(player, playerX, playerY, charWidth, charHeight);
@@ -141,6 +143,22 @@ const animate = () => {
         scorePlace.innerHTML = score;
       }
     }
+    projectiles.forEach((projectile, index) => {
+      if (
+        current.x < projectile.x + 25 &&
+        current.x + charWidth > projectile.x &&
+        current.y < projectile.y + 15 &&
+        current.y + charHeight > projectile.y
+      ) {
+        dying.play();
+        projectileCopy.splice(index, 1);
+        current.x = 900 + charWidth;
+        current.y = Math.random() * (canvas.height - charHeight);
+        score += 1;
+        scorePlace.innerHTML = score;
+      }
+    });
+    projectiles = projectileCopy;
     if (
       current.x < playerX + charWidth &&
       current.x + charWidth > playerX &&
@@ -157,22 +175,6 @@ const animate = () => {
         scorePlace.innerHTML = score;
       }
     }
-
-    projectiles.forEach((projectile, index) => {
-      if (
-        current.x < projectile.x + 25 &&
-        current.x + charWidth > projectile.x &&
-        current.y < projectile.y + 15 &&
-        current.y + charHeight > projectile.y
-      ) {
-        dying.play();
-        projectiles.splice(index, 1);
-        current.x = 900 + charWidth;
-        current.y = Math.random() * (canvas.height - charHeight);
-        score += 1;
-        scorePlace.innerHTML = score;
-      }
-    });
   }
   // moving main character
   if (movingUp === true && playerY >= 0) {
@@ -224,40 +226,39 @@ window.onload = () => {
     instructions.style.display = "block";
     introText.style.display = "none";
   };
+  document.addEventListener("keydown", (event) => {
+    if (isGameStarted && event.code === "ArrowUp") {
+      movingUp = true;
+    } else if (isGameStarted && event.code === "ArrowDown") {
+      movingDown = true;
+    } else if (isGameStarted && event.code === "Space") {
+      arrowShot.play();
+      projectiles.push(
+        new Projectile({
+          x: playerX + charWidth,
+          y: playerY + charHeight / 2,
+        })
+      );
+    } else if (event.code === "KeyV") {
+      if (isGameStarted && artyUses > 0) {
+        howl.play();
+        isArtyUp = true;
+      }
+    }
+  });
+  document.addEventListener("keyup", () => {
+    movingUp = false;
+    movingDown = false;
+  });
   function startGame() {
     start.style.display = "none";
     gameScreen.style.display = "block";
     animate();
     music.play();
-
-    document.addEventListener("keydown", (event) => {
-      if (event.code === "ArrowUp") {
-        movingUp = true;
-      } else if (event.code === "ArrowDown") {
-        movingDown = true;
-      } else if (event.code === "Space") {
-        arrowShot.play();
-        projectiles.push(
-          new Projectile({
-            x: playerX + charWidth,
-            y: playerY + charHeight / 2,
-          })
-        );
-      } else if (event.code === "KeyV") {
-        if (artyUses > 0) {
-          howl.play();
-          isArtyUp = true;
-        }
-      }
-    });
-    document.addEventListener("keyup", () => {
-      movingUp = false;
-      movingDown = false;
-    });
+    isGameStarted = true;
   }
 
   document.getElementById("restartBtn").onclick = () => {
-    /*location.reload(); I was told this was cheating xD*/
     playerX = 0;
     playerY = canvas.height / 2 - 100 + 50;
     artyX = 0 + charHeight / 2;
@@ -270,25 +271,10 @@ window.onload = () => {
     artyUses = 1;
     lives = 3;
     livesPlace.innerHTML = 0;
-    enemies = [
-      {
-        x: 1200,
-        y: Math.random() * (canvas.height - charHeight),
-        img: enemyImg1,
-      },
-      {
-        x: 1400,
-        y: Math.random() * (canvas.height - charHeight),
-        img: enemyImg2,
-      },
-      {
-        x: 1600,
-        y: Math.random() * (canvas.height - charHeight),
-        img: enemyImg3,
-      },
-    ];
-    projectiles.length = 0;
-    console.log(projectiles.length);
+    enemies[0].x = 1200;
+    enemies[1].x = 1400;
+    enemies[2].x = 1600;
+    projectiles = [];
     overScreen.style.display = "none";
     start.style.display = "block";
   };
