@@ -270,7 +270,7 @@ window.onload = () => {
     interval = 0;
     artyUses = 1;
     lives = 3;
-    livesPlace.innerHTML = 0;
+    livesPlace.innerHTML = 3;
     enemies[0].x = 1200;
     enemies[1].x = 1400;
     enemies[2].x = 1600;
