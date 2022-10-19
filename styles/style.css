@@ -2,7 +2,11 @@ body {
     padding: 0;
     text-align: center;
     font-family: "Verdana";
-    background-color: brown;
+    background-image: url("../Images/orc\ background.png"), url("../Images/ranger.png");
+    background-repeat: no-repeat, no-repeat;
+    background-position: right bottom, left bottom;
+    background-size: contain;
+    background-color: darkgreen;
     color: silver
   }
   canvas {
@@ -18,8 +22,8 @@ body {
   
   body button {
     font-size: 30px;
-    background-color: darkgreen;
-    color: silver;
+    background-color: silver;
+    color: darkgreen;
     padding: 20px 40px;
     border: 0;
     box-shadow: 0;
@@ -39,7 +43,7 @@ body {
   }
 
   #score {
-    padding: 0px;
+    padding-right: 10px;
     margin: 0px;
   }
   #lives {
@@ -48,7 +52,7 @@ body {
   }
   #scoring {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     padding: 0px;
     margin: 0px;
   }
