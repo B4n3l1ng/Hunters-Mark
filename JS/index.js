@@ -232,7 +232,9 @@ window.onload = () => {
     } else if (isGameStarted && event.code === "ArrowDown") {
       movingDown = true;
     } else if (isGameStarted && event.code === "Space") {
-      arrowShot.play();
+      if (isGameOver === false) {
+        arrowShot.play();
+      }
       projectiles.push(
         new Projectile({
           x: playerX + charWidth,
