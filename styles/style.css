@@ -45,6 +45,10 @@ body {
   #game-screen {
       float: center;
       padding: 10px 0px;
+      background-image: url("../Images/ranger.png"), url("../Images/orc\ background.png");
+      background-position: left, right;
+      background-repeat: no-repeat, no-repeat;
+      background-size: 20%, 20%;
   }
   
   .gameover {
@@ -70,5 +74,9 @@ body {
 
   .boxNoBorder {
     background-color: rgba(0,0,0,.5);
+  }
+
+  .hawkeye {
+    width: 150px;
   }
 

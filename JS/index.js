@@ -16,17 +16,17 @@ const easterEgg = document.querySelector("#easter");
 
 //sounds
 const music = new Audio("./Sounds/Background Music.mp3");
-music.volume = 0.1;
+music.volume = 0.01;
 const victory = new Audio("./Sounds/Game Over Screen.mp3");
 victory.volume = 0.2;
 const arrowShot = new Audio("./Sounds/Arrow Shot.wav");
-arrowShot.volume = 1;
+arrowShot.volume = 0.5;
 const dying = new Audio("./Sounds/Dying.wav");
-dying.volume = 0.2;
+dying.volume = 0.1;
 const fail = new Audio("./Sounds/fail sound.wav");
-fail.volume = 0.2;
+fail.volume = 0.1;
 const howl = new Audio("./Sounds/howl.wav");
-howl.volume = 0.2;
+howl.volume = 0.1;
 
 //images
 const background = new Image();
