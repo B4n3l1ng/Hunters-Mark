@@ -7,7 +7,7 @@ body {
     background-size: cover;
     background-color: black;
     color: silver;
-    font-size: 1.5em;
+    font-size: 25px;
   }
   canvas {
     border: 1px solid black;
