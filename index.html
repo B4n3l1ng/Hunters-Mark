@@ -8,7 +8,7 @@
     <title>Hunter's Mark</title>
   </head>
   <body>
-    <div id="startscreen">
+    <div id="startscreen" class="box">
       <h1>Hunter's Mark</h1>
       <img src="./Images/logo.png" alt="hunters mark logo" class="logo" />
       <div class="instructions"">
@@ -36,7 +36,7 @@
       <button id="instructionsBtn">Instructions</button>
     </div>
 
-    <div id="game-screen">
+    <div id="game-screen" class="boxNoBorder">
       <div id="scoring">
         <p id="score">
           <span> Score: </span>
@@ -49,8 +49,9 @@
       </div>
       <canvas id="canvas" width="900" height="700"></canvas>
     </div>
-    <div class="gameover">
+    <div class="gameover box">
       <h1 id="gameOverTitle">Game Over!</h1>
+      <img src="./Images/hawkeye.png" alt="hawkeye picture" class="hawkeye">
       <p id="easter">Perhaps next time you should ask Hawkeye for some help.</p>
       <p><span>Your score:</span> <span id="final-score"></span></p>
       <button id="restartBtn">Try again!</button>

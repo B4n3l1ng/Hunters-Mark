@@ -1,13 +1,13 @@
 body {
-    padding: 0;
+    padding: 0px;
     text-align: center;
     font-family: "Verdana";
-    background-image: url("../Images/orc\ background.png"), url("../Images/ranger.png");
-    background-repeat: no-repeat, no-repeat;
-    background-position: right bottom, left bottom;
-    background-size: contain;
-    background-color: darkgreen;
-    color: silver
+    background-image: url("../Images/village.jpg");
+    background-position: center;
+    background-size: cover;
+    background-color: black;
+    color: silver;
+    font-size: 1.5em;
   }
   canvas {
     border: 1px solid black;
@@ -16,7 +16,13 @@ body {
  
   
   .logo {
-    width: 250px;
+    width: 300px;
+  }
+
+  .box {
+    border: solid;
+    background-color: rgba(0,0,0,.5);
+    border-width: 10px;
   }
   
   
@@ -30,6 +36,10 @@ body {
     border-radius: 5px;
     margin-bottom: 20px;
     margin-top: 20px;
+  }
+
+  #startscreen {
+    float: center;
   }
   
   #game-screen {
@@ -57,3 +67,8 @@ body {
     margin: 0px;
     font-size: 20px;
   }
+
+  .boxNoBorder {
+    background-color: rgba(0,0,0,.5);
+  }
+
