@@ -13,6 +13,7 @@ const scorePlace = document.querySelector("#score-num");
 const livesPlace = document.querySelector("#lives-num");
 const finalScore = document.querySelector("#final-score");
 const easterEgg = document.querySelector("#easter");
+const muteText = document.querySelector(".muteText");
 
 //sounds
 const music = new Audio("./Sounds/Background Music.mp3");
@@ -20,9 +21,9 @@ music.volume = 0.01;
 const victory = new Audio("./Sounds/Game Over Screen.mp3");
 victory.volume = 0.2;
 const arrowShot = new Audio("./Sounds/Arrow Shot.wav");
-arrowShot.volume = 0.3;
+arrowShot.volume = 0.2;
 const dying = new Audio("./Sounds/Dying.wav");
-dying.volume = 0.07;
+dying.volume = 0.03;
 const fail = new Audio("./Sounds/fail sound.wav");
 fail.volume = 0.1;
 const howl = new Audio("./Sounds/howl.wav");
@@ -70,6 +71,7 @@ let interval = 0;
 let artyUses = 1;
 let lives = 3;
 let isGameStarted = false;
+let isGameMuted = false;
 
 //enemies
 const enemies = [
@@ -150,7 +152,9 @@ const animate = () => {
         current.y < projectile.y + 15 &&
         current.y + charHeight > projectile.y
       ) {
-        dying.play();
+        if (!isGameMuted) {
+          dying.play();
+        }
         projectileCopy.splice(index, 1);
         current.x = 900 + charWidth;
         current.y = Math.random() * (canvas.height - charHeight);
@@ -201,12 +205,16 @@ const animate = () => {
     if (score >= 50) {
       gameOverTitle.innerHTML = "You saved the village!";
       easterEgg.innerHTML = "Hawkeye has got nothing on you!";
-      victory.play();
+      if (!isGameMuted) {
+        victory.play();
+      }
     } else {
       if (score < 0) {
         score = 0;
       }
-      fail.play();
+      if (!isGameMuted) {
+        fail.play();
+      }
     }
     overScreen.style.display = "block";
     gameScreen.style.display = "none";
@@ -226,6 +234,15 @@ window.onload = () => {
     instructions.style.display = "block";
     introText.style.display = "none";
   };
+  document.getElementById("muteBtn").onclick = () => {
+    if (isGameMuted) {
+      isGameMuted = false;
+      muteText.innerHTML = "off";
+    } else if (!isGameMuted) {
+      isGameMuted = true;
+      muteText.innerHTML = "on";
+    }
+  };
   document.addEventListener("keydown", (event) => {
     if (isGameStarted && event.code === "ArrowUp") {
       movingUp = true;
@@ -233,7 +250,9 @@ window.onload = () => {
       movingDown = true;
     } else if (isGameStarted && event.code === "Space") {
       if (isGameOver === false) {
-        arrowShot.play();
+        if (!isGameMuted) {
+          arrowShot.play();
+        }
       }
       projectiles.push(
         new Projectile({
@@ -243,7 +262,10 @@ window.onload = () => {
       );
     } else if (event.code === "KeyV") {
       if (isGameStarted && artyUses > 0) {
-        howl.play();
+        if (!isGameMuted) {
+          howl.play();
+        }
+
         isArtyUp = true;
       }
     }
@@ -256,7 +278,10 @@ window.onload = () => {
     start.style.display = "none";
     gameScreen.style.display = "block";
     animate();
-    music.play();
+    if (!isGameMuted) {
+      music.play();
+    }
+
     isGameStarted = true;
   }
 
