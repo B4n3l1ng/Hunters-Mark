@@ -15,35 +15,35 @@ const finalScore = document.querySelector("#final-score");
 const easterEgg = document.querySelector("#easter");
 
 //sounds
-const music = new Audio("../Sounds/Background Music.mp3");
+const music = new Audio("/Sounds/Background Music.mp3");
 music.volume = 0.1;
-const victory = new Audio("../Sounds/Game Over Screen.mp3");
+const victory = new Audio("/Sounds/Game Over Screen.mp3");
 victory.volume = 0.2;
-const arrowShot = new Audio("../Sounds/Arrow Shot.wav");
+const arrowShot = new Audio("/Sounds/Arrow Shot.wav");
 arrowShot.volume = 1;
-const dying = new Audio("../Sounds/Dying.wav");
+const dying = new Audio("/Sounds/Dying.wav");
 dying.volume = 0.2;
-const fail = new Audio("../Sounds/fail sound.wav");
+const fail = new Audio("/Sounds/fail sound.wav");
 fail.volume = 0.2;
-const howl = new Audio("../Sounds/howl.wav");
+const howl = new Audio("/Sounds/howl.wav");
 howl.volume = 0.2;
 
 //images
 const background = new Image();
-background.src = "../Images/Background.png";
+background.src = "/Images/Background.png";
 const player = new Image();
-player.src = "../Images/player.png";
+player.src = "/Images/player.png";
 const enemyImg1 = new Image();
-enemyImg1.src = "../Images/orc final.png";
+enemyImg1.src = "/Images/orc final.png";
 const enemyImg2 = new Image();
-enemyImg2.src = "../Images/ogre final.png";
+enemyImg2.src = "/Images/ogre final.png";
 const enemyImg3 = new Image();
-enemyImg3.src = "../Images/goblin final.png";
+enemyImg3.src = "/Images/goblin final.png";
 const arty = new Image();
-arty.src = "../Images/wolf final.png";
+arty.src = "/Images/wolf final.png";
 
 const arrowImg = new Image();
-arrowImg.src = "../Images/arrow final.png";
+arrowImg.src = "/Images/arrow final.png";
 
 //player position and size
 let playerX = 0;
