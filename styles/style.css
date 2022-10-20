@@ -4,10 +4,10 @@ body {
     font-family: "Verdana";
     background-image: url("../Images/village.jpg");
     background-position: center;
-    background-size: cover;
+    background-size: 100% 150%;
     background-color: black;
     color: silver;
-    font-size: 30px;
+    font-size: 1.5em;
   }
   canvas {
     border: 1px solid black;
