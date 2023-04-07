@@ -1,6 +1,6 @@
 # Hunters-Mark
  <h1>Description</h1>
-    <p>2d, top down, space invaders style game, where you control an archer who moves horizontally and fires arrows in a straight line, kill enemy orcs and stop them from reaching you.</p>
+    <p>2d, top down, space invaders style game, where you control an archer who moves vertically and fires arrows in a straight line, kill enemy orcs and stop them from reaching you.</p>
 
  <h1>MVP</h1>
     <p>A working game start, gameplay and game over screens. Fully funtional logic and scoring.</p>
