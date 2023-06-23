@@ -102,9 +102,6 @@ const animate = () => {
   let scoreStr = score.toString();
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
   ctx.drawImage(player, playerX, playerY, charWidth, charHeight);
-    if(gameId %300===0){
-        console.log(gameId)
-    }
   if (score % 10 === 0 && score !== 0) {
     if (interval === 0) {
       enemySpeed += 1;
